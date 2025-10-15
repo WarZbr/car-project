@@ -306,6 +306,29 @@ curl -X POST http://localhost:8080/api/consertos \
 
 ---
 
+## 🔍 Consultas SQL Úteis
+
+### Listar todos os consertos
+```sql
+SELECT * FROM consertos;
+```
+
+### Apenas consertos ativos
+```sql
+SELECT * FROM consertos WHERE ativo = true;
+```
+
+### Verificar estrutura da tabela
+```sql
+SHOW COLUMNS FROM consertos;
+```
+
+### Histórico de migrations
+```sql
+SELECT * FROM flyway_schema_history;
+```
+
+---
 
 ## 📌 Notas Importantes
 
