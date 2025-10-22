@@ -61,11 +61,9 @@ public class ConsertoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirConserto(@PathVariable Long id) {
-        boolean excluido = consertoService.excluirLogicamente(id);
-        if (excluido) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return consertoService.excluirLogicamente(id)
+            ? ResponseEntity.status(HttpStatus.NO_CONTENT).build()
+            : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }
