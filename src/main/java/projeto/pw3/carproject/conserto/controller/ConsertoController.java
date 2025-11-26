@@ -1,9 +1,9 @@
 package projeto.pw3.carproject.conserto.controller;
 
 import jakarta.validation.Valid;
-import projeto.pw3.carproject.conserto.dto.ConsertoAtualizacaoDTO ;
+import projeto.pw3.carproject.conserto.dto.ConsertoAtualizacaoDTO;
 import projeto.pw3.carproject.conserto.dto.ConsertoDTO;
-import projeto.pw3.carproject.conserto.dto.ConsertoResumoDTO ;
+import projeto.pw3.carproject.conserto.dto.ConsertoResumoDTO;
 import projeto.pw3.carproject.conserto.model.Conserto;
 import projeto.pw3.carproject.conserto.service.ConsertoService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/consertos")
@@ -42,7 +43,7 @@ public class ConsertoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Conserto> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Conserto> buscarPorId(@PathVariable UUID id) {
         Optional<Conserto> conserto = consertoService.buscarPorId(id);
         return conserto
                 .map(ResponseEntity::ok)
@@ -51,7 +52,7 @@ public class ConsertoController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<Conserto> atualizarConserto(
-            @PathVariable Long id,
+            @PathVariable UUID id,
             @Valid @RequestBody ConsertoAtualizacaoDTO dto) {
         Optional<Conserto> conserto = consertoService.atualizarConserto(id, dto);
         return conserto
@@ -60,7 +61,7 @@ public class ConsertoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirConserto(@PathVariable Long id) {
+    public ResponseEntity<Void> excluirConserto(@PathVariable UUID id) {
         boolean excluido = consertoService.excluirLogicamente(id);
         if (excluido) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

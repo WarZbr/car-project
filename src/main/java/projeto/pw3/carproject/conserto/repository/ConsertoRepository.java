@@ -7,14 +7,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+import java.util.UUID;
 
 @Repository
-public interface ConsertoRepository extends JpaRepository<Conserto, Long> {
+public interface ConsertoRepository extends JpaRepository<Conserto, UUID> {
 
     @Query("SELECT c FROM Conserto c WHERE c.ativo = true")
     List<Conserto> findAllAtivos();
 
     @Query("SELECT c FROM Conserto c WHERE c.id = :id AND c.ativo = true")
-    Optional<Conserto> findByIdAndAtivo(Long id);
+    Optional<Conserto> findByIdAndAtivo(UUID id);
 }

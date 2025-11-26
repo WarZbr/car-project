@@ -1,5 +1,5 @@
 CREATE TABLE consertos (
-                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                           id UUID DEFAULT RANDOM_UUID() PRIMARY KEY,
                            data_entrada VARCHAR(255) NOT NULL,
                            data_saida VARCHAR(255),
                            veiculo_marca VARCHAR(255) NOT NULL,

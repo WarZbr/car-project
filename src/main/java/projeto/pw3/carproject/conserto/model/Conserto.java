@@ -1,10 +1,11 @@
 package projeto.pw3.carproject.conserto.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "consertos")
@@ -14,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class Conserto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(name = "data_entrada")
     private String dataEntrada;

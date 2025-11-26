@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConsertoResumoDTO {
 
-    private long id;
+    private UUID id;
     private String dataEntrada;
     private String dataSaida;
     private String mecanicoNome;

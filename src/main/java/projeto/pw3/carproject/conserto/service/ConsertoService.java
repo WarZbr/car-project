@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,11 +68,11 @@ public class ConsertoService {
         return consertoRepository.findAll();
     }
 
-    public Optional<Conserto> buscarPorId(Long id) {
+    public Optional<Conserto> buscarPorId(UUID id) {
         return consertoRepository.findById(id);
     }
 
-    public Optional<Conserto> atualizarConserto(Long id, ConsertoAtualizacaoDTO dto) {
+    public Optional<Conserto> atualizarConserto(UUID id, ConsertoAtualizacaoDTO dto) {
         Optional<Conserto> consertoOpt = consertoRepository.findByIdAndAtivo(id);
 
         if (consertoOpt.isPresent()) {
@@ -98,7 +99,7 @@ public class ConsertoService {
         return Optional.empty();
     }
 
-    public boolean excluirLogicamente(Long id) {
+    public boolean excluirLogicamente(UUID id) {
         Optional<Conserto> consertoOpt = consertoRepository.findByIdAndAtivo(id);
 
         if (consertoOpt.isPresent()) {
